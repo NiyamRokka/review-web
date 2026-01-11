@@ -10,10 +10,14 @@ const item_folder = "/item_uploads";
 //create item
 export const createItem = asyncHandler(async (req: Request, res: Response) => {
   const { cover_image, images } = req.files as {
-    [fieldname: string]: Express.Multer.File[];
-  };
+    [fieldname: string]: Express.Multer.File[];};
 
-  const { name, type, description, details } = req.body;
+  const { 
+    name, 
+    type,
+    description,
+    details
+  } = req.body;
 
   if (!cover_image) {
     throw new CustomError("Cover Image Required", 400);
@@ -25,7 +29,7 @@ export const createItem = asyncHandler(async (req: Request, res: Response) => {
     description,
     details: details ? JSON.parse(details ?? "") : null,
   });
-
+  
   if (!item) {
     throw new CustomError("Something went wrong. Try again later.", 500);
   }
