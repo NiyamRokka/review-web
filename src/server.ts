@@ -3,6 +3,7 @@ import express, { NextFunction, Request, Response } from 'express'
 import { connectDatabase } from './config/database.config'
 import CustomError, { errorHandler } from './middlewares/error-handler.middleware'
 import cookieParser from 'cookie-parser'
+import cors from 'cors';
 
 
 // importing routes
@@ -22,6 +23,15 @@ const app = express()
 app.use(express.urlencoded({extended:true,limit:'5mb'}))
 app.use(express.json({limit:'5mb'}))
 app.use(cookieParser())
+app.use(
+  cors({
+    origin: [
+      "http://localhost:8848",
+      "http://localhost:5173", // vite default (safe to include)
+    ],
+    credentials: true,
+  })
+);
 // cors
 // headers
 // ...

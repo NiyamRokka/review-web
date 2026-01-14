@@ -35,8 +35,9 @@ export const createItem = asyncHandler(async (req: Request, res: Response) => {
   }
 
   // Upload cover image
+  console.log("Before cover upload");
   item.cover_image = await uploadFile(cover_image[0].path, item_folder);
-
+  console.log("After cover upload");
 
   if (images && images.length > 0) {
     const imagePaths = await Promise.all(
