@@ -25,7 +25,10 @@ app.use(express.json({limit:'5mb'}))
 app.use(cookieParser())
 app.use(
   cors({
-    origin: "*", // TEMPORARY — FOR DEBUGGING
+    origin: [
+      "http://localhost:8848",
+      "https://review-web-q39m.onrender.com"
+    ],
     credentials: true,
   })
 );
