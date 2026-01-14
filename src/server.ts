@@ -25,10 +25,7 @@ app.use(express.json({limit:'5mb'}))
 app.use(cookieParser())
 app.use(
   cors({
-    origin: [
-      "http://localhost:8848",
-      "http://localhost:5173", // vite default (safe to include)
-    ],
+    origin: "*", // TEMPORARY — FOR DEBUGGING
     credentials: true,
   })
 );
